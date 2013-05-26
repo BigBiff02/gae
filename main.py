@@ -13,10 +13,11 @@ myHtml = """
 <body onload="post()">
     <h1>This is how we send post data!!!</h1>
 
+    <div>Here is the orignal message from the client, which we resent to the client:</div>
+    <div id="originalMessage"></div>
     <hr/>
-
     <div>Here's the response from the server:</div>
-    <div id="response" style="color:red;"></div>
+    <div id="response"></div>
 </body>
 <html>
 """
@@ -41,6 +42,10 @@ class Poster(webapp2.RequestHandler):
 
         ## send a response back to the client
         responseData = json.dumps({"serverMessage":"I'm From the Server"})
+
+        ## yes, this is redundant to reEncode to JSON, but it's a proof of concept
+        dataToResend = json.loads(usableData)
+        responseData.update(dataToResend)
         self.response.write(responseData)
 
 app = webapp2.WSGIApplication([('/poster', Poster),

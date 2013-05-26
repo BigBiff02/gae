@@ -1,12 +1,13 @@
 
-
 function post(){
 
     // Here is the data we sill send
-    var data = {"value": "HURRAY IT WORKED!!"}
+    var data = {"value": "HURRAY IT WORKED!!"};
+    
+    // encode the data as a JSON string
     var body = JSON.stringify(data);
 
-    // this is basic version of ajax object, if using IE, you'll have to do some other stuff
+    // this is basic version of ajax object, for brevity, I'm not accounting for IE.
     var url = "/poster"
     var xhr = new XMLHttpRequest();
 

@@ -17,7 +17,7 @@ function post(){
             console.log(response);
 
             // Notice how the json object was set up orignally - "response" is the object
-            document.getElementById('originalMessage').textContent = response.value
+
             document.getElementById('response').textContent = response.serverMessage;
         }
     }
